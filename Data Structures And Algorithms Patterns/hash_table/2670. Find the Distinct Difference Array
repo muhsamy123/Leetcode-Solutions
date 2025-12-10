@@ -1,0 +1,19 @@
+https://leetcode.com/problems/find-the-distinct-difference-array/description/?envType=problem-list-v2&envId=hash-table
+
+class Solution:
+    def distinctDifferenceArray(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        prefix_set = set()
+        suffix_set = set()
+        prefix_count = [0] * n 
+        suffix_count = [0] * n 
+        result = [0] * n 
+        for i in range(n):
+            prefix_set.add(nums[i])
+            prefix_count[i] = len(prefix_set)
+        for i in range(n-1,-1,-1):
+            suffix_set.add(nums[i])
+            suffix_count[i] = len(suffix_set)
+        for i in range(n):
+            result[i] = prefix_count[i] - (suffix_count[i+1] if i + 1 < n else 0 )
+        return result
