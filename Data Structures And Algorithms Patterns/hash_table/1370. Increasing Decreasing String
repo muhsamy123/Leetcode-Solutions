@@ -1,0 +1,18 @@
+https://leetcode.com/problems/increasing-decreasing-string/?envType=problem-list-v2&envId=hash-table
+
+class Solution:
+    def sortString(self, s: str) -> str:
+        freq = Counter(s)
+        
+        chars = sorted(freq.keys())
+        result = []
+        while len(result) < len(s):
+            for ch in chars:
+                if freq[ch] > 0:
+                    result.append(ch)
+                    freq[ch] -=1
+            for ch in reversed(chars):
+                if freq[ch] > 0:
+                    result.append(ch)
+                    freq[ch]-=1 
+        return ''.join(result)
