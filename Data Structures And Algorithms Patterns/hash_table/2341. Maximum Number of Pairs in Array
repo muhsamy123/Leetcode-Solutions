@@ -1,0 +1,16 @@
+
+https://leetcode.com/problems/maximum-number-of-pairs-in-array/description/?envType=problem-list-v2&envId=hash-table
+
+
+class Solution:
+    def numberOfPairs(self, nums: List[int],groupsize=2) -> List[int]:
+        freq = defaultdict(int)
+        for num in nums:
+            freq[num] +=1
+
+        total_groups = 0 
+        left_overs = 0 
+        for count in freq.values():
+            total_groups += count // groupsize
+            left_overs += count % groupsize
+        return [total_groups , left_overs] 
