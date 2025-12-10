@@ -1,0 +1,18 @@
+https://leetcode.com/problems/merge-similar-items/description/?envType=problem-list-v2&envId=hash-table
+
+class Solution:
+    def mergeSimilarItems(self, items1: List[List[int]], items2: List[List[int]]) -> List[List[int]]:
+        freq = {} 
+        for value,weight in items1:
+            if value in freq:
+                freq[value] += weight 
+            else:
+                freq[value] = weight 
+        for value,weight in items2:
+            if value in freq:
+                freq[value] += weight
+            else:
+                freq[value] = weight
+        return sorted([[v,w] for v,w in freq.items() ])
+
+        
