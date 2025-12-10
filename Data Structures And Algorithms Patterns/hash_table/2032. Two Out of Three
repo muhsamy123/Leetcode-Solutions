@@ -1,0 +1,20 @@
+https://leetcode.com/problems/two-out-of-three/?envType=problem-list-v2&envId=hash-table
+
+class Solution:
+    def twoOutOfThree(self, nums1: List[int], nums2: List[int], nums3: List[int]) -> List[int]:
+        set1 = set(nums1)
+        set2 = set(nums2)
+        set3 = set(nums3)
+        result = set() 
+
+        for x in set1:
+            if x in set2 or x in set3:
+                result.add(x)
+        for x in set2:
+            if x in set1 or x in set3:
+                result.add(x)
+        for x in set3:
+            if x in set1 or x in set2:
+                result.add(x)
+        return list(result)
+  
